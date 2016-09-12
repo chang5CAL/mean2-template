@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var Models = require('../models')
+var Models = require('../models');
 
 /* Simple find */
 router.get('/find/:name', function(req, res, next) {

@@ -10,5 +10,3 @@ var kittenSchema = new Schema({
 var Kitten = mongoose.model("Kitten", kittenSchema);
 
 module.exports.Kitten = Kitten;
-
- 
