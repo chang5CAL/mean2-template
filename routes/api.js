@@ -31,4 +31,14 @@ router.post('/create', function(req, res, next) {
 	});
 });
 
+/* Simple POST */
+router.post('/create/:name', function(req, res, next) {
+	// req.body.<parameter-name> for post requests
+	var cat = new Models.Kitten({name: req.params.name});
+	cat.save(function(err, kitty) {
+		if (err) return console.error(err);
+  		res.json(kitty);
+	});
+});
+
 module.exports = router;
