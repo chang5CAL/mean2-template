@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/test', function(req, res, next) {
-  res.render('test', { title: 'Express' });
+   res.sendFile(path.join(__dirname, '../', 'views', 'test.html'))
 });
 
 module.exports = router;
