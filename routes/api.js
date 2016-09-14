@@ -41,4 +41,26 @@ router.post('/create/:name', function(req, res, next) {
 	});
 });
 
+router.put('/update/:id/:name', function(req, res, next) {
+	// 1 line solution
+	// Models.Kittten.update({ _id: req.params.id }, { $set: { name: req.params.name }}, callback);
+	Models.Kitten.findById(req.params.id, function(err, kitten) {
+		if (err) return handleError(err);
+		updateKitten.name = req.params.name;
+		updateKitten.save(function(err, updateKitten) {
+			if (err) return handleError(err);
+			res.send(updateKitten);
+		});
+	});
+});
+
+router.delete('delete/:id', function(req, res, next) {
+	// Model.Kitten.findOneAndRemove({_id:id})
+	//  .then(doc =>)
+	Models.Kitten.findOne({_id: req.params.id}, function (err, kitten){
+		if (err) return handleError(err);
+        kitten.remove();
+    });
+});
+
 module.exports = router;
